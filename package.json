@@ -1,0 +1,23 @@
+{
+  "name": "guapp",
+  "version": "0.0.1",
+  "description": "General Use App or Giro Utils App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "General",
+    "App",
+    "Desktop",
+    "Integration",
+    "Cloud",
+    "Utility",
+    "Useful",
+    "App",
+    "Daily",
+    "Tasks"
+  ],
+  "author": "Giro Zetto",
+  "license": "ISC"
+}
