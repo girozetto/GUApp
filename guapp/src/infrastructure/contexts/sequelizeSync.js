@@ -70,6 +70,9 @@ const syncAndSeed = async () => {
         //Type Notification
         await TypeNotification.findOrCreate();
 
+        //USER
+        await User.findOrCreate();
+
         console.log("Sincronização e inserção de dados estáticos concluída com sucesso.");
     } catch (error) {
         console.error("Erro ao sincronizar e popular dados:", error);
