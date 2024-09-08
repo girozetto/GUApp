@@ -1,0 +1,8 @@
+{
+    "url" : "urlnovice",
+    "init-pos" : {
+        "latitude" : 7.0123213213,
+        "longitude": 16.2232343289
+    },
+    "init-scale" : 7.212002932121
+}

@@ -40,6 +40,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "guapp": "file:",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3"
   }
 }
