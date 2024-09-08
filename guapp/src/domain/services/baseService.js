@@ -19,7 +19,7 @@ class BaseService
     async delete(entityId)
     {
         try{
-            return this.repository.create(entity);
+            return this.repository.create(entityId);
         }catch(err){
             console.error(err);
         }

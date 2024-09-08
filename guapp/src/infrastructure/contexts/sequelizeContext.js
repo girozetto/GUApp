@@ -18,6 +18,8 @@ const initSequelize = () => {
     if (!config) {
         throw new Error('Configuração do banco de dados não encontrada.');
     }
+
+    console.log("Configurações da Base de Dados: ", config);
     
     if (config['type'] == SQLITE) {
 

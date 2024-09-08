@@ -28,4 +28,11 @@ UserModel.init({
     timestamps: false
 });
 
-module.exports = {UserModel};
+const findOrCreate = async ()=>{
+
+    for (const level of levels) {
+        await LevelModel.findOrCreate({ where: { id: level.id }, defaults: level });
+    }
+}
+
+module.exports = {UserModel, findOrCreate};

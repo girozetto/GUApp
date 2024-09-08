@@ -17,11 +17,19 @@ NotificationModel.init({
         type: DataTypes.TEXT,
         allowNull: false
     },
-    typeId: {
+    idType: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'TypeNotification',  // Relacionamento com TypeNotification
+            model: 'tTypeNotification',  // Relacionamento com TypeNotification
+            key: 'id'
+        }
+    },
+    idUser: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'tUser',  // Relacionamento com TypeNotification
             key: 'id'
         }
     },

@@ -33,6 +33,14 @@ TaskModel.init({
             key: 'id'
         }
     },
+    idType: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'tTypeTask',  // Relacionamento com Project
+            key: 'id'
+        }
+    },
     idStatus: {
         type: DataTypes.INTEGER,
         allowNull: false,
