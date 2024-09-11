@@ -2,3 +2,7 @@
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 
 const { ipcRenderer, contextBridge } = require('electron');
+
+contextBridge.exposeInMainWorld('navigationAPI',{
+    redirect: (destination)=>ipcRenderer.send('redirect', destination)
+});

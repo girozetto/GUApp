@@ -1,0 +1,3 @@
+Gerenciador de tarefas
+Gerenciador de alarmes
+Notificações para o desktop e para o mobile

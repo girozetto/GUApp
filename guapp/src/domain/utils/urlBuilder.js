@@ -1,3 +1,4 @@
+const { VIEW_TEMPLATE_URL } = require("../constants/configs");
 const { SQLITE } = require("../constants/dbtypes");
 
 const buildDbUrl = (dbtype, dbname, user = null, password = null, host = null, port = null) => {
@@ -8,6 +9,11 @@ const buildDbUrl = (dbtype, dbname, user = null, password = null, host = null, p
     return `${dbtype}://${credentials}${connectionAddress}${dbname}`;
 }
 
+const buildPageUrl = (view) => {
+    return VIEW_TEMPLATE_URL.replace("{view}", view);
+}
+
 module.exports = {
-    buildDbUrl
+    buildDbUrl,
+    buildPageUrl
 };

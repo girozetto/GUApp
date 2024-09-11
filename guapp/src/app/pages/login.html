@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="GuAPP for desktop useful utilities" />
+    <meta
+      name="keywords"
+      content="guapp, desktop, utilities, tasks, lifetime, professional programming"
+      />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Iniciar Sessão</title>
+    <link rel="stylesheet" href="../styles/login.css" />
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Cadastrar</header>
+        <form action="#">
+          <input type="text" placeholder="Nome Completo" required />
+          <input type="text" placeholder="Endereço de Email" required />
+          <input type="password" placeholder="Password" required />
+          <div class="checkbox">
+            <input type="checkbox" id="signupCheck" />
+            <label for="signupCheck">Eu aceito todos os termos e condições</label>
+          </div>
+          <input type="submit" value="Cadastrar" />
+        </form>
+      </div>
+
+      <div class="form login">
+        <header>Iniciar Sessão</header>
+        <form action="#">
+          <input type="text" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <a href="#">Esqueceu a password?</a>
+          <input type="submit" value="Entrar" />
+        </form>
+      </div>
+
+      <script src="../scripts/login.js"></script>
+    </section>
+  </body>
+</html>

@@ -1,5 +1,13 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('node:path');
+const { buildPageUrl } = require('./domain/utils/urlBuilder');
+
+//Only sync database with actual models
+require('./infrastructure/contexts/sequelizeSync');
+
+// Load IPC events
+//Load controllers loader
+require('./controllers/loader');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -12,7 +20,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preloads/mainPreload.js'),
       nodeIntegration : false,
       contextIsolation: true
     }
@@ -23,6 +31,13 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  ipcMain.on('navigate', (event, target) => {
+    if (mainWindow) {
+      mainWindow.loadFile(path.join(__dirname,buildPageUrl(target)));
+    }
+  });
+
 };
 
 Menu.setApplicationMenu(null);

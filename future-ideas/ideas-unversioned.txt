@@ -1,0 +1,4 @@
+Adicionar funcionalidade que usa mapas com o leafletjs (Ainda não sei para o quê irá servir, mas deve existir por alguma razão)
+Adicionar funcionalidade que usa api para streaming semelhante ao SuperFlix API (https://superflixapi.dev/doc/)
+Adicionar funcionalidade que usa api para catálogo de filmes e séries (https://www.omdbapi.com/)
+Adicionar funcionalidade que usa algum modelo de linguagem generativa seja chatgpt ou o gemini por exemplo, que seja genérico para permitir qualquer que seja o modelo, conseguir fazer as mesmas coisas.

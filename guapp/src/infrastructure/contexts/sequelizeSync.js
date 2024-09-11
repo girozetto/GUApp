@@ -1,4 +1,4 @@
-const sequelize = require('../contexts/sequelizeContext'); // Importa a instância do Sequelize
+const sequelize = require('../contexts/sequelizeContext');
 const Level = require('../models/tLevel');
 const Task = require('../models/tTask');
 const User = require('../models/tUser');
@@ -64,10 +64,10 @@ const syncAndSeed = async () => {
         //STATUSES
         await Status.findOrCreate();
 
-        //Type Task
+        //TYPE TASK
         await TypeTask.findOrCreate();
 
-        //Type Notification
+        //TYPE NOTIFICATION
         await TypeNotification.findOrCreate();
 
         //USER

@@ -37,6 +37,10 @@ class FluentQuery {
     async toList() {
         return await this.model.findAll(this.queryOptions);
     }
+
+    async count() {
+        return await this.model.count(this.queryOptions);
+    }
 }
 
 module.exports = FluentQuery;
