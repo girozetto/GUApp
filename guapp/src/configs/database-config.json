@@ -4,5 +4,6 @@
     "password": "AIdAfpe1975",
     "port": 3306,
     "database": "guapp.sqlite",
-    "type": "sqlite"
+    "type": "sqlite",
+    "logging": false
 }

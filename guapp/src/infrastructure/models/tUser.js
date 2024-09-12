@@ -1,6 +1,10 @@
 const User = require('../../domain/models/user')
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../contexts/sequelizeContext');
+const EncriptionService = require('../../domain/services/encriptionService');
+const ConfigService = require('../../domain/services/configService');
+
+const configService = new ConfigService();
 
 class UserModel extends Model {}
 
@@ -37,8 +41,12 @@ const findOrCreate = async ()=>{
         const userCount = await UserModel.count();
 
         if (userCount > 0) return;
+        
+        const config = configService.getConfig('PREFERENCES');
 
-        const userData = new User('Gilberto Alexandre','julbertoalexandredealmeida@gmail.com','Gilberto2024!');
+        const passwordEncrypted = await EncriptionService.encryptPassword(config['default-user-password']);
+
+        const userData = new User(null, config['default-user-name'], config['default-user-email'], passwordEncrypted);
         
         const [user, created] = await UserModel.findOrCreate({
             where: { email: userData.email },  // Busca por email

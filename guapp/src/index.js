@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('node:path');
 const { buildPageUrl } = require('./domain/utils/urlBuilder');
 
@@ -27,14 +27,14 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'app/pages/index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'app/pages/login.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  ipcMain.on('navigate', (event, target) => {
+  ipcMain.on('navigation:redirect', (event, target) => {
     if (mainWindow) {
-      mainWindow.loadFile(path.join(__dirname,buildPageUrl(target)));
+      mainWindow.loadFile(path.join(__dirname, buildPageUrl(target)));
     }
   });
 

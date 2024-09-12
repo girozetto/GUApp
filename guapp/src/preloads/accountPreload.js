@@ -1,9 +1,6 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge } = require('electron');
+const { AUTHENTICATION , buildPreloader} = require('./basePreload');
 
 const PRELOAD_NAME = 'account'; 
 
-contextBridge.exposeInMainWorld('accountAPI', {
-    login: (credentials) => ipcRenderer.invoke(`${PRELOAD_NAME}:login`, credentials),
-    register: (user) => ipcRenderer.invoke(`${PRELOAD_NAME}:register`, user),
-    profile: (id) => ipcRenderer.invoke(`${PRELOAD_NAME}:profile`, id)
-});
+module.exports = buildPreloader(PRELOAD_NAME, AUTHENTICATION(PRELOAD_NAME));

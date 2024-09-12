@@ -3,6 +3,7 @@ const UserService = require('../domain/services/userService');
 const User = require('../domain/models/user');
 const DataResponse = require('../domain/models/dataResponse');
 const UserValidator = require('../domain/validators/userValidator');
+const EncriptionService = require('../domain/services/encriptionService');
 
 const userService = new UserService();
 
@@ -14,9 +15,9 @@ ipcMain.handle(`${CONTROLLER_NAME}:login`, async (event, loginData) => {
 
     if(errors) return DataResponse(errors == null, errors);
 
-    const user = await userService.query().where({email:loginData.email, password:loginData.password}).firstOrDefault();
+    const user = await userService.query().where({email:loginData.email}).firstOrDefault();
 
-    errors = !user ? 'Invalid email or password' : errors;
+    errors = !user || !EncriptionService.isPasswordMatch(loginData.password, user.password) ? 'Invalid email or password' : errors;
 
     return DataResponse(errors == null, errors, user);
 });

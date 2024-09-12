@@ -26,6 +26,7 @@ const initSequelize = () => {
         // Configuração para SQLite
         return new Sequelize({
             dialect: config['type'],
+            logging: config['logging'],
             storage: `./${config['database']}`, // Caminho para o arquivo SQLite
         });
 

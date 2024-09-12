@@ -53,7 +53,7 @@ const syncAndSeed = async () => {
         buildRelations();
 
         // Sincroniza o banco de dados
-        await sequelize.sync({ alter: true });
+        await sequelize.sync();
         
         //LEVELS
         await Level.findOrCreate();
