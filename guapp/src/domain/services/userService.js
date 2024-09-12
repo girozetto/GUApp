@@ -9,9 +9,9 @@ class UserService extends BaseService
         super(new UserRepository());
     }
 
-    create(entity)
+    async create(entity)
     {
-        entity.password = EncriptionService.encryptPassword(entity.password);
+        entity.password = await EncriptionService.encryptPassword(entity.password);
         return super.create(entity);
     }
 }

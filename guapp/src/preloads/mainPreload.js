@@ -1,9 +1,6 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 const { contextBridge } = require('electron');
-const accountPreload = require('./accountPreload');
-const taskPreload = require('./taskPreload');
-const navigationPreload = require('./navigationPreload');
 
 const registeredPreloads = [
     accountPreload,

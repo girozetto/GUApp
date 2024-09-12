@@ -1,7 +1,7 @@
 const { ipcMain } = require('electron');
 const TaskService = require('../domain/services/taskService');
 const Task = require('../domain/models/task');
-const {DataResponse,DataResponseList} = require('../domain/models/dataResponse');
+const {DataResponse} = require('../domain/models/dataResponse');
 const TaskValidator = require('../domain/validators/taskValidator');
 const { fetchQuery } = require('../domain/utils/genericUtils');
 
@@ -78,9 +78,8 @@ ipcMain.handle(`${CONTROLLER_NAME}:delete`, async (event, id) => {
 });
 
 ipcMain.handle(`${CONTROLLER_NAME}:fetch`, async (event, queryOptions) => {
-
     const data = await fetchQuery(taskService.query(), queryOptions)
-
+    console.log('Logs: ', data, queryOptions);
     return data;
     
 });

@@ -11,15 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GUAPP - Iniciar Sessão</title>
     <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../libs/font-awesome/css/all.min.css">
   </head>
   <body>
     <section class="wrapper active">
       <div class="form signup">
         <header>Cadastrar</header>
+        <div class="message" id="registerMessage"></div> <!-- Mensagem de erro/sucesso -->
         <form id="registerForm" action="#">
           <input type="text" name="name" placeholder="Nome Completo" required />
           <input type="text" name="email" placeholder="Endereço de Email" required />
           <input type="password" name="password" placeholder="Password" required />
+          <input type="password" name="confirmPassword" placeholder="Confirmar Password" required />
           <div class="checkbox">
             <input type="checkbox" id="signupCheck" />
             <label for="signupCheck">Eu aceito todos os termos e condições</label>
@@ -30,6 +33,7 @@
 
       <div class="form login">
         <header>Iniciar Sessão</header>
+        <div class="message" id="loginMessage"></div> <!-- Mensagem de erro -->
         <form id="loginForm" action="#">
           <input type="text" name="email" placeholder="Email" required />
           <input type="password" name="password" placeholder="Password" required />

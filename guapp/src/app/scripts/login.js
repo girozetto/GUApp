@@ -1,28 +1,31 @@
 
 const LoginScreenManager = (()=>{
     
-    const global = {
-      wrapper: null,
-      signupHeader: null,
-      loginHeader: null,
-      loginForm: null,
-      registerForm: null
-    };
+  const global = {
+    wrapper: null,
+    signupHeader: null,
+    loginHeader: null,
+    loginForm: null,
+    registerForm: null,
+    loginMessage: null,
+    registerMessage: null,
+  };
 
-    const init = ()=>{
-      setAllElements();
-      addWrapperEventListeners();
-      addActionHandlers();
-    };
+  const init = () => {
+    setAllElements();
+    addWrapperEventListeners();
+    addActionHandlers();
+  };
 
-    const setAllElements = ()=>{
-      global.wrapper = document.querySelector(".wrapper");
-      global.loginHeader = document.querySelector(".login header");
-      global.signupHeader = document.querySelector(".signup header");
-      global.loginForm = document.getElementById("loginForm");
-      global.registerForm = document.getElementById("registerForm");
-      console.log("Elements Set! ", global);
-    };
+  const setAllElements = () => {
+    global.wrapper = document.querySelector(".wrapper");
+    global.loginHeader = document.querySelector(".login header");
+    global.signupHeader = document.querySelector(".signup header");
+    global.loginForm = document.getElementById("loginForm");
+    global.registerForm = document.getElementById("registerForm");
+    global.loginMessage = document.getElementById("loginMessage");
+    global.registerMessage = document.getElementById("registerMessage");
+  };
 
     const addWrapperEventListeners = ()=>{
         global.loginHeader.addEventListener("click", () => {
@@ -34,7 +37,7 @@ const LoginScreenManager = (()=>{
         });
     };
 
-    const submitForm = async (element, isLogin = true)=>{
+    const getFormAsJSON = (element)=>{
       const formData = new FormData(element);
 
       const user = {};
@@ -42,22 +45,75 @@ const LoginScreenManager = (()=>{
       formData.forEach((value,key)=>{
         user[key] = value.valueOf();
       });
-      alert("Form: "+JSON.stringify(user));
+
+      return user;
+
+    };
+
+    const handleSubmission = async (element, isLogin = true) => {
+
+        const user = getFormAsJSON(element);
+
+        const response = isLogin ? await window.accountAPI.login(user) : await window.accountAPI.register(user);
+
+        handleResponse(response, isLogin, element);
+
+    };
+
+    const handleResponse = (response, isLogin, elementTarget) => {
+      
+      const element = isLogin ? global.loginMessage : global.registerMessage;
+
+      if(response.success) elementTarget.reset();
+
+      if(!response.success || !isLogin) return showMessage(element, response.error || 'User registered Successfully', response.success);
+      
+      return alert('Sessão Iniciada com sucesso');
+
     };
 
     const addActionHandlers = ()=>{
-      console.log("Account API Loaded: ", window.accountAPI);
-      console.log("Main API Loaded: ", window.navigationAPI);
-      console.log("Task API Loaded: ", window.taskAPI);
-      global.loginForm.addEventListener("submit", (event) =>{ 
+
+      global.loginForm.addEventListener("submit", async (event) =>{ 
         event.preventDefault();
-        
-        submitForm(event.target, true)
+        await handleSubmission(event.target, true);
       });
-      global.registerForm.addEventListener("submit", (event) => {
+
+      global.registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        submitForm(event.target, false)
+        await handleSubmission(event.target, false);
+
       });
+
+    };
+
+    const showMessage = (element, message, isSuccess = true) => {
+      // Remove qualquer animação anterior
+      element.classList.remove("error", "success", "shake");
+  
+      const type = isSuccess ? "success" : "error";
+      // Adiciona o tipo de mensagem
+      element.classList.add(type);
+
+      const icon = isSuccess ? "check-circle" : "exclamation-circle";
+  
+      // Exibe o ícone correspondente
+      element.innerHTML = `<i class="fas fa-${icon}"></i> ${message}`;
+      
+      // Mostra a mensagem
+      element.style.display = "flex"; 
+      
+      // Se for erro, adiciona a classe 'shake'
+      if (!isSuccess) {
+        element.classList.add("shake");
+      }
+  
+      // Remove a mensagem após 5 segundos
+      setTimeout(() => {
+        element.style.display = "none";
+        element.classList.remove("shake"); // Remove a animação após o tempo
+      }, 5000);
+
     };
 
     return{

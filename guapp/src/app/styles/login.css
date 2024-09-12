@@ -134,3 +134,42 @@ form input[type="submit"] {
   color: #fff;
   border: none;
 }
+
+/* Estilos para mensagens de erro/sucesso */
+
+/* Animação de shake */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.message {
+  margin: 10px 0;
+  padding: 12px 20px;
+  border-radius: 5px;
+  display: none;
+  align-items: center;
+  font-size: 16px;
+  transition: all 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.message i {
+  margin-right: 10px;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.message.error.shake {
+  animation: shake 0.4s ease; /* Aplica a animação shake */
+}

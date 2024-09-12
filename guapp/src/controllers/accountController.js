@@ -1,7 +1,7 @@
 const { ipcMain } = require('electron');
 const UserService = require('../domain/services/userService');
 const User = require('../domain/models/user');
-const DataResponse = require('../domain/models/dataResponse');
+const { DataResponse } = require('../domain/models/dataResponse');
 const UserValidator = require('../domain/validators/userValidator');
 const EncriptionService = require('../domain/services/encriptionService');
 

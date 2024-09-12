@@ -4,7 +4,7 @@ const fetchQuery = async (fluentQuery, options) => {
 
     const totalCount = await fluentQuery.count();
 
-    fluentQuery = fluentQuery.where(options.filters);
+    if(options.filters) fluentQuery = fluentQuery.where(options.filters);
 
     const totalFiltered = await fluentQuery.count();
 

@@ -20,7 +20,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preloads/mainPreload.js'),
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration : false,
       contextIsolation: true
     }
@@ -32,7 +32,7 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  ipcMain.on('navigation:redirect', (event, target) => {
+  ipcMain.handle('navigation:redirect', (event, target) => {
     if (mainWindow) {
       mainWindow.loadFile(path.join(__dirname, buildPageUrl(target)));
     }
