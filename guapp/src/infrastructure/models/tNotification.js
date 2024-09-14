@@ -21,7 +21,7 @@ NotificationModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tTypeNotification',  // Relacionamento com TypeNotification
+            model: 'tTypeNotifications',  // Relacionamento com TypeNotification
             key: 'id'
         }
     },
@@ -29,7 +29,7 @@ NotificationModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tUser',  // Relacionamento com TypeNotification
+            model: 'tUsers',  // Relacionamento com TypeNotification
             key: 'id'
         }
     },
@@ -38,7 +38,7 @@ NotificationModel.init({
     creationDate: DataTypes.DATE
 }, {
     sequelize,
-    modelName: 'tNotification',
+    modelName: 'tNotifications',
     timestamps: false
 });
 

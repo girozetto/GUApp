@@ -18,7 +18,7 @@ ProjectModel.init({
     endDate: DataTypes.DATE
 }, {
     sequelize,
-    modelName: 'tProject',
+    modelName: 'tProjects',
     timestamps: false
 });
 

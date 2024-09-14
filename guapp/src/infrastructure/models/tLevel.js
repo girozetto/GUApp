@@ -16,7 +16,7 @@ LevelModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tLevel',
+    modelName: 'tLevels',
     timestamps: false,
 });
 

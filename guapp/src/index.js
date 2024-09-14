@@ -1,9 +1,8 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('node:path');
 const { buildPageUrl } = require('./domain/utils/urlBuilder');
-
 //Only sync database with actual models
-require('./infrastructure/contexts/sequelizeSync');
+const { syncAndSeed } = require('./infrastructure/contexts/sequelizeSync');
 
 // Load IPC events
 //Load controllers loader
@@ -14,7 +13,10 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const createWindow = () => {
+const createWindow = async () => {
+
+  await syncAndSeed();
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,

@@ -37,8 +37,11 @@ const initSequelize = () => {
             config['user'], 
             config['password'], 
             config['host'], 
-            config['port']
+            config['port'],
+            config['ssl-mode']
         );
+
+        console.log("URL do Banco de Dados: ", databaseUrl);
 
         return new Sequelize(databaseUrl, {
             dialect: config['type'],

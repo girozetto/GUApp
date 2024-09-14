@@ -29,7 +29,7 @@ UserModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tUser',
+    modelName: 'tUsers',
     timestamps: false
 });
 

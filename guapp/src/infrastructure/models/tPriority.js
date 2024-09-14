@@ -16,7 +16,7 @@ PriorityModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tPriority',
+    modelName: 'tPriorities',
     timestamps: false,
 });
 

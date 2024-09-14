@@ -16,7 +16,7 @@ TypeTaskModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tTypeTask',
+    modelName: 'tTypeTasks',
     timestamps: false,
 });
 

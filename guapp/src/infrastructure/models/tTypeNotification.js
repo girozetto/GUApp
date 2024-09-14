@@ -16,7 +16,7 @@ TypeNotificationModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tTypeNotification',
+    modelName: 'tTypeNotifications',
     timestamps: false,
 });
 

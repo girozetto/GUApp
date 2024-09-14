@@ -16,7 +16,7 @@ StatusModel.init({
     }
 }, {
     sequelize,
-    modelName: 'tStatus',
+    modelName: 'tStatuses',
     timestamps: false,
 });
 

@@ -27,7 +27,10 @@
             <input type="checkbox" id="signupCheck" />
             <label for="signupCheck">Eu aceito todos os termos e condições</label>
           </div>
-          <input type="submit" value="Cadastrar" />
+          <button type="submit" id="registerButton" class="button">
+            Cadastrar
+            <div class="spinner hidden" id="registerSpinner"></div>
+          </button>
         </form>
       </div>
 
@@ -38,7 +41,10 @@
           <input type="text" name="email" placeholder="Email" required />
           <input type="password" name="password" placeholder="Password" required />
           <a href="#">Esqueceu a password?</a>
-          <input type="submit" value="Entrar" />
+          <button type="submit" id="loginButton" class="button">
+            Entrar
+            <div class="spinner hidden" id="loginSpinner"></div>
+          </button>
         </form>
       </div>
 

@@ -21,7 +21,7 @@ TaskModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tPriority',  // Relacionamento com Priority
+            model: 'tPriorities',  // Relacionamento com Priority
             key: 'id'
         }
     },
@@ -29,7 +29,7 @@ TaskModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tProject',  // Relacionamento com Project
+            model: 'tProjects',  // Relacionamento com Project
             key: 'id'
         }
     },
@@ -37,7 +37,7 @@ TaskModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tTypeTask',  // Relacionamento com Project
+            model: 'tTypeTasks',  // Relacionamento com Project
             key: 'id'
         }
     },
@@ -45,7 +45,7 @@ TaskModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tStatus',  // Relacionamento com Status
+            model: 'tStatuses',  // Relacionamento com Status
             key: 'id'
         }
     },
@@ -53,14 +53,14 @@ TaskModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'tLevel',  // Relacionamento com Level
+            model: 'tLevels',  // Relacionamento com Level
             key: 'id'
         }
     },
     associatedIdUser: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'tUser',  // Relacionamento com User
+            model: 'tUsers',  // Relacionamento com User
             key: 'id'
         }
     },
@@ -68,13 +68,13 @@ TaskModel.init({
     associatedIdTask: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'tTask',  // Auto-referência para Task
+            model: 'tTasks',  // Auto-referência para Task
             key: 'id'
         }
     }
 }, {
     sequelize,
-    modelName: 'tTask',
+    modelName: 'tTasks',
     timestamps: false
 });
 

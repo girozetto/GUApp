@@ -1,13 +1,13 @@
 const sequelize = require('../contexts/sequelizeContext');
 const Level = require('../models/tLevel');
-const Task = require('../models/tTask');
 const User = require('../models/tUser');
-const Project = require('../models/tProject');
-const Notification = require('../models/tNotification');
 const Priority = require('../models/tPriority');
 const Status = require('../models/tStatus');
 const TypeNotification = require('../models/tTypeNotification');
 const TypeTask = require('../models/tTypeTask');
+const Project = require('../models/tProject');
+const Notification = require('../models/tNotification');
+const Task = require('../models/tTask');
 
 const buildRelations = ()=>{
     // Relacionamentos de Task
@@ -78,8 +78,6 @@ const syncAndSeed = async () => {
         console.error("Erro ao sincronizar e popular dados:", error);
     }
 }
-
-syncAndSeed();
 
 module.exports = {
     syncAndSeed

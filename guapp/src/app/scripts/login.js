@@ -9,6 +9,8 @@ const LoginScreenManager = (()=>{
     registerForm: null,
     loginMessage: null,
     registerMessage: null,
+    loginSpinner: null,
+    registerSpinner: null,
   };
 
   const init = () => {
@@ -25,6 +27,8 @@ const LoginScreenManager = (()=>{
     global.registerForm = document.getElementById("registerForm");
     global.loginMessage = document.getElementById("loginMessage");
     global.registerMessage = document.getElementById("registerMessage");
+    global.loginSpinner = document.getElementById("loginSpinner");
+    global.registerSpinner = document.getElementById("registerSpinner");
   };
 
     const addWrapperEventListeners = ()=>{
@@ -51,13 +55,13 @@ const LoginScreenManager = (()=>{
     };
 
     const handleSubmission = async (element, isLogin = true) => {
-
+        showProcessing(element);
         const user = getFormAsJSON(element);
 
         const response = isLogin ? await window.accountAPI.login(user) : await window.accountAPI.register(user);
 
         handleResponse(response, isLogin, element);
-
+        showProcessing(element,false);
     };
 
     const handleResponse = (response, isLogin, elementTarget) => {
@@ -85,6 +89,14 @@ const LoginScreenManager = (()=>{
 
       });
 
+    };
+
+    const showProcessing = (form, isProcessing = true) => {
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = isProcessing; // Desativa o botão
+
+      const spinner = form.querySelector('.spinner');
+      spinner.classList.toggle("hidden", !isProcessing); // Mostra ou esconde o spinner
     };
 
     const showMessage = (element, message, isSuccess = true) => {

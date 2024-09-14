@@ -11,7 +11,7 @@ const CONTROLLER_NAME = 'account';
 
 ipcMain.handle(`${CONTROLLER_NAME}:login`, async (event, loginData) => {
     
-    let errors = UserValidator.validateProperties(loginData);
+    let errors = await UserValidator.validateProperties(loginData);
 
     if(errors) return DataResponse(errors == null, errors);
 
@@ -24,7 +24,7 @@ ipcMain.handle(`${CONTROLLER_NAME}:login`, async (event, loginData) => {
 
 ipcMain.handle(`${CONTROLLER_NAME}:register`, async (event, registerData) => {
     
-    let errors = UserValidator.validateProperties(registerData, false);
+    let errors =  await UserValidator.validateProperties(registerData, false);
 
     if(errors) return DataResponse(errors == null, errors);
 

@@ -1,9 +1,10 @@
 {
-    "host": "localhost",
-    "user": "root",
-    "password": "AIdAfpe1975",
+    "host": "db4free.net",
+    "user": "girozetto",
+    "password": "1884@Berlim",
     "port": 3306,
-    "database": "guapp.sqlite",
-    "type": "sqlite",
+    "database": "grapeware",
+    "type": "mysql",
+    "ssl-mode": "",
     "logging": false
 }
