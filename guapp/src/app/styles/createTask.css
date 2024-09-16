@@ -1,0 +1,140 @@
+/* Estilo básico e layout do formulário */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f0faff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.task-wrapper {
+    background: #4070f4;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.task-form-container header {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:focus {
+    border-color: #3657c7;
+    box-shadow: 0 0 8px rgba(54, 87, 199, 0.5);
+}
+
+/* Botão de prioridade com animações */
+.priority-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.priority-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.priority-btn.low { background-color: #28a745; }
+.priority-btn.medium { background-color: #ffc107; }
+.priority-btn.high { background-color: #dc3545; }
+
+.priority-btn:focus, .priority-btn.selected {
+    transform: scale(1.1);
+}
+
+/* Botão de envio */
+.submit-btn {
+    background-color: #4070f4;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.submit-btn .spinner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.submit-btn .hidden { display: none; }
+
+.submit-btn:hover {
+    background-color: #3657c7;
+}
+
+/* Mensagem de erro/sucesso */
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    font-size: 14px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

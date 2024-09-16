@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('node:path');
 const { buildPageUrl } = require('./domain/utils/urlBuilder');
+const { instance } = require('./domain/managers/sessionManager')
 //Only sync database with actual models
 const { syncAndSeed } = require('./infrastructure/contexts/sequelizeSync');
 
@@ -28,14 +29,19 @@ const createWindow = async () => {
     }
   });
 
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'app/pages/login.html'));
+  const activeUser = await instance.getActiveUser();
+  if (activeUser) {
+    mainWindow.loadFile(path.join(__dirname, buildPageUrl('dashboard')));
+  } else {
+    mainWindow.loadFile(path.join(__dirname, buildPageUrl('login')));
+  }
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
   ipcMain.handle('navigation:redirect', (event, target) => {
     if (mainWindow) {
+      console.log("Target Received: ", target);
       mainWindow.loadFile(path.join(__dirname, buildPageUrl(target)));
     }
   });

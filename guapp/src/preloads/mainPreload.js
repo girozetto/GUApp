@@ -9,10 +9,6 @@ const registeredPreloads = [
     // Add more preloads here as needed...
 ];
 
-console.log('Account API Loaded: ', accountPreload);
-console.log('Task API Loaded: ', taskPreload);
-console.log('Navigation API Loaded: ', navigationPreload);
-
 for(var preload of registeredPreloads)
 {
     contextBridge.exposeInMainWorld(preload.API_NAME, preload.operations);

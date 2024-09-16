@@ -1,3 +1,5 @@
+//OBS: this code is too big, just because of preload scripts particularity of not being possible to load other custom scripts or custom dependencies
+
 const { ipcRenderer, contextBridge } = require('electron');
 
 const AUTHENTICATION = (preloadName)=>{
@@ -8,9 +10,9 @@ const AUTHENTICATION = (preloadName)=>{
     };
 };
 
-const NAVIGATION = ()=>{
+const NAVIGATION = (preloadName)=>{
     return {
-        redirect: (destination)=>ipcRenderer.send('navigation:redirect', destination)
+        redirect: (destination)=>ipcRenderer.invoke(`${preloadName}:redirect`, destination)
     };
 };
 
@@ -32,7 +34,7 @@ const buildAPI = (preloadName, operations) => {
 };
 
 const registeredPreloads = [
-    buildAPI('navigation', NAVIGATION()),
+    buildAPI('navigation', NAVIGATION('navigation')),
     buildAPI('task', PERSISTENCE('task')),
     buildAPI('account', AUTHENTICATION('account')),
     // Add more preloads here as needed...

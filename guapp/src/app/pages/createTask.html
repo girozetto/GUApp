@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de Tarefas - GUAPP</title>
+    <link rel="stylesheet" href="../styles/createTask.css">
+    <link rel="stylesheet" href="../libs/font-awesome/css/all.min.css">
+</head>
+<body>
+    <section class="task-wrapper">
+        <div class="task-form-container">
+            <header>Criar Nova Tarefa</header>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="title">Título da Tarefa</label>
+                    <input type="text" id="title" name="title" placeholder="Ex: Corrigir bugs" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Descreva a tarefa aqui..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Prioridade</label>
+                    <div class="priority-selector">
+                        <button type="button" class="priority-btn low" data-value="1">Baixa</button>
+                        <button type="button" class="priority-btn medium" data-value="2">Média</button>
+                        <button type="button" class="priority-btn high" data-value="3">Alta</button>
+                    </div>
+                    <input type="hidden" id="idPriority" name="idPriority" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="idProject">Projeto</label>
+                    <select id="idProject" name="idProject" required>
+                        <option value="" disabled selected>Selecione o projeto</option>
+                        <option value="1">Projeto A</option>
+                        <option value="2">Projeto B</option>
+                        <!-- Adicione outros projetos dinamicamente se necessário -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="idType">Tipo de Tarefa</label>
+                    <select id="idType" name="idType" required>
+                        <option value="" disabled selected>Selecione o tipo</option>
+                        <option value="1">Funcionalidade</option>
+                        <option value="2">Bug</option>
+                        <option value="3">Suporte</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="idStatus">Status</label>
+                    <select id="idStatus" name="idStatus" required>
+                        <option value="1">Aberto</option>
+                        <option value="2">Em Andamento</option>
+                        <option value="3">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="idLevel">Nível de Complexidade</label>
+                    <select id="idLevel" name="idLevel" required>
+                        <option value="" disabled selected>Selecione o nível</option>
+                        <option value="1">Iniciante</option>
+                        <option value="2">Intermediário</option>
+                        <option value="3">Avançado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="associatedIdUser">Usuário Associado</label>
+                    <select id="associatedIdUser" name="associatedIdUser" required>
+                        <option value="" disabled selected>Selecione o usuário</option>
+                        <option value="1">Usuário A</option>
+                        <option value="2">Usuário B</option>
+                        <!-- Adicione os usuários dinamicamente se necessário -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="estimatedTime">Tempo Estimado (em horas)</label>
+                    <input type="number" id="estimatedTime" name="estimatedTime" placeholder="Tempo estimado em horas" min="0" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Criar Tarefa</span>
+                    <div class="spinner hidden"></div>
+                </button>
+
+                <div id="taskMessage" class="message hidden"></div>
+            </form>
+        </div>
+    </section>
+
+    <script src="../scripts/task.js"></script>
+</body>
+</html>

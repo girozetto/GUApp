@@ -1,5 +1,9 @@
 {
     "encryption-level" : 10,
+    "app-name":"guapp-desktop",
+    "app-sessions-path":"sessions/sessions.json",
+    "secret-key" : "guAPP-GiroZetto-09/2024",
+    "token-expiration": 3600,
     "default-user-name" : "Gilberto Alexandre",
     "default-user-email" : "julbertoalexandredealmeida@gmail.com",
     "default-user-password" : "Gilberto2024!"

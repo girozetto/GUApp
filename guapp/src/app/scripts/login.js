@@ -13,10 +13,19 @@ const LoginScreenManager = (()=>{
     registerSpinner: null,
   };
 
-  const init = () => {
+  const init = async () => {
+    await validateSession();
     setAllElements();
     addWrapperEventListeners();
     addActionHandlers();
+  };
+
+  const validateSession = async () => {
+    const response = await window.accountAPI.profile();
+    console.log("Response: " + JSON.stringify(response));
+    if(response.success && response.data){
+      await window.navigationAPI.redirect('index');
+    }
   };
 
   const setAllElements = () => {
@@ -72,7 +81,7 @@ const LoginScreenManager = (()=>{
 
       if(!response.success || !isLogin) return showMessage(element, response.error || 'User registered Successfully', response.success);
       
-      return alert('Sessão Iniciada com sucesso');
+      return validateSession();
 
     };
 
