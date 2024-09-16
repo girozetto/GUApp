@@ -1,3 +1,7 @@
 Gerenciador de tarefas
 Gerenciador de alarmes
 Notificações para o desktop e para o mobile
+
+TODO:
+Migrar para o Lit com navigo ou page.js para router
+Criar formas de criar extensões para a aplicação e ser possível desenvolver de forma independente coisas adicionais

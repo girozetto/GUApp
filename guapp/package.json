@@ -45,7 +45,9 @@
     "guapp": "file:",
     "jsonwebtoken": "^9.0.2",
     "keytar": "^7.9.0",
+    "lit": "^3.2.0",
     "mysql2": "^3.11.0",
+    "navigo": "^8.11.1",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
   }
