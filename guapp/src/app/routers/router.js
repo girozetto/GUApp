@@ -1,8 +1,6 @@
 import Navigo from 'navigo';
-import './components/login.js';
+import '../components/login-form.js';
 import './components/dashboard.js';
-import './components/create-task.js';
-import './components/edit-task.js';
 
 const router = new Navigo('/');
 

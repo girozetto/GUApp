@@ -5,4 +5,5 @@ module.exports = {
     MAP_CONFIG_URL: "configs/map-config.json",
     PREFERENCES_CONFIG_URL: "configs/preferences-config.json",
     VIEW_TEMPLATE_URL: "app/pages/{view}.html",
+    MAIN_TEMPLATE_URL: "app/index.html"
 };

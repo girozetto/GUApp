@@ -8,6 +8,7 @@ const TypeTask = require('../models/tTypeTask');
 const Project = require('../models/tProject');
 const Notification = require('../models/tNotification');
 const Task = require('../models/tTask');
+const { startTask, succeedTask, greenMessage, redMessage } = require('../../domain/handlers/progressHandler');
 
 const buildRelations = ()=>{
     // Relacionamentos de Task
@@ -46,36 +47,35 @@ const buildRelations = ()=>{
     TypeNotification.TypeNotificationModel.hasMany(Notification.NotificationModel, { foreignKey: 'idType' });
 };
 
+const entities = [
+    { name: 'Levels', action: () => Level.findOrCreate() },
+    { name: 'Priorities', action: () => Priority.findOrCreate() },
+    { name: 'Statuses', action: () => Status.findOrCreate() },
+    { name: 'Type Tasks', action: () => TypeTask.findOrCreate() },
+    { name: 'Type Notifications', action: () => TypeNotification.findOrCreate() },
+    { name: 'Users', action: () => User.findOrCreate() }
+];
+
 
 const syncAndSeed = async () => {
     try {
-        
+        let spinner = await startTask("Building relationships...");
         buildRelations();
+        await succeedTask(spinner, 'Relationships built successfully.');
 
-        // Sincroniza o banco de dados
-        await sequelize.sync();
+        spinner = await startTask('Synchronizing database...');
+        await sequelize.sync({logging:false});
+        await succeedTask(spinner, 'Database synchronized successfully.');
         
-        //LEVELS
-        await Level.findOrCreate();
+        for (const entity of entities) {
+            spinner = await startTask(`Seeding ${entity.name}...`);
+            await entity.action();
+            await succeedTask(spinner, `${entity.name} seeded successfully.`);
+        }
 
-        //PRIORITIES
-        await Priority.findOrCreate();
-
-        //STATUSES
-        await Status.findOrCreate();
-
-        //TYPE TASK
-        await TypeTask.findOrCreate();
-
-        //TYPE NOTIFICATION
-        await TypeNotification.findOrCreate();
-
-        //USER
-        await User.findOrCreate();
-
-        console.log("Sincronização e inserção de dados estáticos concluída com sucesso.");
+        console.log(await greenMessage("Sincronização e inserção de dados estáticos concluída com sucesso."));
     } catch (error) {
-        console.error("Erro ao sincronizar e popular dados:", error);
+        console.error(await redMessage("Erro ao sincronizar e popular dados: "), error);
     }
 }
 

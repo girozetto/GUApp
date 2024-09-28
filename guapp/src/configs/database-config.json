@@ -3,8 +3,8 @@
     "user": "girozetto",
     "password": "1884@Berlim",
     "port": 3306,
-    "database": "grapeware",
-    "type": "mysql",
+    "database": "guapp.sqlite",
+    "type": "sqlite",
     "ssl-mode": "",
     "logging": false
 }

@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('node:path');
-const { buildPageUrl } = require('./domain/utils/urlBuilder');
+const { buildPageUrl, buildMainPageUrl } = require('./domain/utils/urlBuilder');
 const { instance } = require('./domain/managers/sessionManager')
 //Only sync database with actual models
 const { syncAndSeed } = require('./infrastructure/contexts/sequelizeSync');
@@ -31,7 +31,7 @@ const createWindow = async () => {
 
   const activeUser = await instance.getActiveUser();
   if (activeUser) {
-    mainWindow.loadFile(path.join(__dirname, buildPageUrl('dashboard')));
+    mainWindow.loadFile(path.join(__dirname, buildMainPageUrl()));
   } else {
     mainWindow.loadFile(path.join(__dirname, buildPageUrl('login')));
   }
